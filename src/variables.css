@@ -1,0 +1,11 @@
+:root {
+  --color-bg: #001d3d;
+  --color-bg-2: #003566;
+  --color-txt: #deeaf7;
+  --color-txt-2: #ffd60a;
+  --color-accent: #ffc300;
+  --color-black: #000814;
+
+  /* --transition: 350ms cubic-bezier(0.4, 0, 0.2, 1); */
+  --transition: 0.3s cubic-bezier(0.3, 0.49, 0.8, 0.53);
+}
