@@ -21,8 +21,3 @@ const Movies = () => {
   );
 };
 export default Movies;
-
-// Movies: 🎥
-
-// {['movie - 1', 'movie - 2', 'movie - 3'].map(movie => {
-//         return (<Link key={movie} to={`${movie}`}>{movie}<Link/>))}
