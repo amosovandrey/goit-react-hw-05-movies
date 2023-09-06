@@ -1,7 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
-  const [setSearchParams] = useSearchParams();
+  const [_, setSearchParams] = useSearchParams();
 
   return (
     <div>

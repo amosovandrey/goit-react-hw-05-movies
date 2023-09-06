@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 export const Wrapper = styled.div`
-  margin: 88px auto 0;
+  margin: 0 auto;
   display: block;
   text-align: center;
   gap: 24px;
