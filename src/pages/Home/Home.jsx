@@ -15,11 +15,12 @@ import {
   ListItemImage,
   Title,
 } from './Home.styled';
+import { Loader } from 'components/Loader/Loader';
 
 const StyledLink = styled(NavLink)`
   color: var(--color-txt);
   text-decoration: none;
-  tex &.active {
+  &.active {
     color: var(--color-accent);
   }
 `;
@@ -27,19 +28,27 @@ const StyledLink = styled(NavLink)`
 const Home = () => {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchTrendingMovies()
       .then(function (response) {
+        setIsLoading(true);
         setMovies(response.data.results);
       })
       .catch(function (error) {
         console.error(error);
+      })
+      .finally(function () {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 300);
       });
   }, []);
 
   return (
     <Wrapper>
+      {isLoading && <Loader />}
       <Title>Trending Today</Title>
       <List>
         {movies.map(movie => (

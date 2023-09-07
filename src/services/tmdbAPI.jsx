@@ -34,3 +34,17 @@ export const fetchMovieDetailes = async movieId => {
 
   return await axios.request(options);
 };
+
+export const fetchMovieCast = async movieId => {
+  const options = {
+    method: 'GET',
+    url: `${BASE_URL}/movie/${movieId}/credits`,
+    params: { language: 'en-US' },
+    headers: {
+      accept: 'application/json',
+      Authorization: API_KEY,
+    },
+  };
+
+  return await axios.request(options);
+};
