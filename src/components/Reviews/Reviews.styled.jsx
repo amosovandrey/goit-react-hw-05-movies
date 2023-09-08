@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 const breakpointTablet = '768px';
 const breakpointDesktop = '1440px';
 
-export const CastWrapper = styled.div`
+export const ReviewsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -16,7 +16,8 @@ export const CastWrapper = styled.div`
     width: 1080px;
   }
 `;
-export const CastList = styled.ul`
+
+export const ReviewsList = styled.ul`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -26,8 +27,8 @@ export const CastList = styled.ul`
 
   @media screen and (min-width: ${breakpointTablet}) {
     margin: 0;
-    flex-direction: row;
-    flex-wrap: wrap;
+    /* flex-direction: row;
+    flex-wrap: wrap; */
     width: 720px;
     gap: 16px;
   }
@@ -36,54 +37,44 @@ export const CastList = styled.ul`
   }
 `;
 
-export const CastListItem = styled.li`
+export const ReviewsListItem = styled.li`
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: column;
   gap: 8px;
+  padding: 8px;
+  width: 100%;
   font-size: 14px;
   transition: var(--transition);
 
   &:hover {
     transform: scale(1.05);
+    background-color: var(--color-bg);
+    border-radius: 8px;
   }
-
   @media screen and (min-width: ${breakpointTablet}) {
-    width: calc((720px - 16px * 3) / 4);
   }
   @media screen and (min-width: ${breakpointDesktop}) {
     font-size: 18px;
-    width: calc((1080px - 16px * 3) / 4);
   }
 `;
 
-export const CastListItemImage = styled.img`
-  width: 32px;
-  height: 48px;
-  border-radius: 4px;
-
-  @media screen and (min-width: ${breakpointTablet}) {
-    width: 48px;
-    height: 72px;
-  }
-  @media screen and (min-width: ${breakpointDesktop}) {
-    width: 56px;
-    height: 84px;
-  }
-`;
-
-export const CastListItemText = styled.p`
+export const Author = styled.span`
   color: var(--color-txt-2);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  font-weight: bold;
 `;
 
-export const CastListItemSpan = styled.p`
+export const ReviewsListItemText = styled.p`
   color: var(--color-txt);
 `;
 
-export const ButtonWrapper = styled.div`
+export const ReadMoreLink = styled.a`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none;
+`;
+
+export const LoadMoreButtonWrapper = styled.div`
   display: flex;
   align-content: center;
   justify-content: space-between;

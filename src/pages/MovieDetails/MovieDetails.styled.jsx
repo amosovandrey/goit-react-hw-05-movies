@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-const breakpointTablet = '720px';
+const breakpointTablet = '768px';
 const breakpointDesktop = '1440px';
 
 export const Wrapper = styled.div`
@@ -8,27 +8,31 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: 24px;
   padding: 12px;
+  font-size: 14px;
 
   @media screen and (min-width: ${breakpointTablet}) {
     gap: 32px;
     padding: 24px;
+    font-size: 16px;
   }
 
   @media screen and (min-width: ${breakpointDesktop}) {
     gap: 48px;
     padding: 36px;
+    font-size: 18px;
   }
 `;
 
 export const Container = styled.div`
   display: flex;
+  margin: 0 auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 296px;
   gap: 24px;
   @media screen and (min-width: ${breakpointTablet}) {
-    width: 672px;
+    width: 720px;
   }
 
   @media screen and (min-width: ${breakpointDesktop}) {
@@ -37,7 +41,7 @@ export const Container = styled.div`
 `;
 
 export const MovieWrapper = styled.div`
-  margin: 0 auto;
+  /* margin: 0 auto; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,6 +66,13 @@ export const MovieItem = styled.div`
 export const MovieImage = styled.img`
   width: 296px;
   height: 444px;
+  @media screen and (min-width: ${breakpointTablet}) {
+    width: 348px;
+    height: 522px;
+  }
+
+  @media screen and (min-width: ${breakpointDesktop}) {
+  }
 `;
 
 export const MovieDesc = styled.div`
@@ -69,14 +80,26 @@ export const MovieDesc = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 24px;
-  max-width: 296px;
+  width: 296px;
+
+  @media screen and (min-width: ${breakpointTablet}) {
+    width: 348px;
+    height: 522px;
+  }
+  @media screen and (min-width: ${breakpointDesktop}) {
+    width: 708px;
+  }
 `;
 
 export const DetailsWrapper = styled.div`
   display: flex;
-  margin: 0 auto;
-  padding: 24px;
+  justify-content: space-between;
+  align-items: center;
+
   width: 100%;
+  @media screen and (min-width: ${breakpointDesktop}) {
+    padding: 0 156px;
+  }
 `;
 
 export const DetailsList = styled.ul`
@@ -92,4 +115,8 @@ export const DetailsListItem = styled.li`
   padding: 8px;
   min-width: 100px;
   text-align: center;
+  transition: var(--transition);
+  &:hover {
+    transform: scale(1.1);
+  }
 `;

@@ -4,9 +4,19 @@ import { fetchMovieCast, IMAGE_BASE_URL, IMAGE_SIZE } from 'services/tmdbAPI';
 import { Loader } from 'components/Loader/Loader';
 import defaultCastPic from '../../../src/default-cast-pic.jpeg';
 import scrollToView from 'services/scrollToView';
-import { CastList, CastListItem, CastListItemImage } from './Cast.styled';
+import {
+  CastList,
+  CastListItem,
+  CastListItemImage,
+  CastListItemText,
+  CastWrapper,
+  CastListItemSpan,
+  MainBtn,
+  SecondBtn,
+  ButtonWrapper,
+} from './Cast.styled';
 
-const actorsByPage = 5;
+const actorsByPage = 4;
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -28,9 +38,7 @@ const Cast = () => {
         setError(error);
       })
       .finally(function () {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 300);
+        setIsLoading(false);
       });
   }, [movieId]);
 
@@ -49,7 +57,7 @@ const Cast = () => {
       {error ? (
         <h3>Looks like there's no info about the cast 🤷🏻‍♂️</h3>
       ) : (
-        <div>
+        <CastWrapper>
           <CastList>
             {actors.slice(0, visibleActors).map(actor => (
               <CastListItem key={actor.id}>
@@ -66,24 +74,28 @@ const Cast = () => {
                     width="32"
                   />
                 )}
-                <p>
+                <CastListItemText>
                   {actor.name}
-                  {actor.character && <span> as {actor.character}</span>}
-                </p>
+                  {actor.character && (
+                    <CastListItemSpan>{` as ${actor.character}`}</CastListItemSpan>
+                  )}
+                </CastListItemText>
               </CastListItem>
             ))}
           </CastList>
-          {visibleActors < actors.length && (
-            <button type="button" onClick={loadMoreActors}>
-              Load More Actors
-            </button>
-          )}
-          {visibleActors > actorsByPage && (
-            <button type="button" onClick={collapseActorsList}>
-              Collapse List
-            </button>
-          )}
-        </div>
+          <ButtonWrapper>
+            {visibleActors < actors.length && (
+              <MainBtn type="button" onClick={loadMoreActors}>
+                Load More Actors
+              </MainBtn>
+            )}
+            {visibleActors > actorsByPage && (
+              <SecondBtn type="button" onClick={collapseActorsList}>
+                Collapse List
+              </SecondBtn>
+            )}
+          </ButtonWrapper>
+        </CastWrapper>
       )}
     </>
   );

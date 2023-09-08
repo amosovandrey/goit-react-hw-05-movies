@@ -48,3 +48,17 @@ export const fetchMovieCast = async movieId => {
 
   return await axios.request(options);
 };
+
+export const fetchMovieReviews = async movieId => {
+  const options = {
+    method: 'GET',
+    url: `${BASE_URL}/movie/${movieId}/reviews`,
+    params: { language: 'en-US' },
+    headers: {
+      accept: 'application/json',
+      Authorization: API_KEY,
+    },
+  };
+
+  return await axios.request(options);
+};

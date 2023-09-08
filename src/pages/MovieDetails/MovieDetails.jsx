@@ -26,7 +26,9 @@ import { Loader } from 'components/Loader/Loader';
 const StyledLink = styled(NavLink)`
   color: var(--color-txt);
   text-decoration: none;
-  &:hover {
+  transition: var(--transition);
+  &.active {
+    text-transform: uppercase;
     color: var(--color-accent);
   }
 `;
@@ -67,7 +69,11 @@ const MovieDetails = () => {
       ) : (
         <Container>
           <MovieWrapper>
-            {movie.title && <MovieTitle>{movie.title}</MovieTitle>}
+            {movie.title ? (
+              <MovieTitle>{movie.title}</MovieTitle>
+            ) : (
+              <MovieTitle>{` `}</MovieTitle>
+            )}
             <MovieItem>
               {movie.poster_path ? (
                 <MovieImage
@@ -79,7 +85,6 @@ const MovieDetails = () => {
               )}
 
               <MovieDesc>
-                {' '}
                 <p>{movie.overview}</p>
                 <p>Released: {formattedDate}</p>
               </MovieDesc>

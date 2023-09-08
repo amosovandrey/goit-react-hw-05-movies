@@ -4,6 +4,7 @@ import Movies from 'pages/Movies/Movies';
 import { Route, Routes } from 'react-router-dom';
 import Cast from './Cast/Cast';
 import Layout from './Layout/Layout';
+import Reviews from './Reviews/Reviews';
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
         <Route path="movies" element={<Movies />} />
         <Route path="movie/:movieId" element={<MovieDetails />}>
           <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<div>🤘🏻</div>} />{' '}
+          <Route path="reviews" element={<Reviews />} />{' '}
         </Route>
       </Route>
     </Routes>
