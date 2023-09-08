@@ -63,7 +63,7 @@ const Reviews = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {error ? (
+      {error || reviews.length === 0 ? (
         <h3>Looks like there's no info about the reviews 🤷🏻‍♂️</h3>
       ) : (
         <ReviewsWrapper>
