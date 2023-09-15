@@ -28,6 +28,7 @@ const StyledLink = styled(NavLink)`
 const Home = () => {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -37,6 +38,7 @@ const Home = () => {
         setMovies(response.data.results);
       })
       .catch(function (error) {
+        setError(error);
         console.error(error);
       })
       .finally(function () {
@@ -49,6 +51,7 @@ const Home = () => {
   return (
     <Wrapper>
       {isLoading && <Loader />}
+      {error && <h2> Oops!.. Something goes wrong</h2>}
       <Title>Trending Today</Title>
       <List>
         {movies.map(movie => (
@@ -58,7 +61,11 @@ const Home = () => {
                 src={`${IMAGE_BASE_URL}${IMAGE_SIZE}${movie.poster_path}`}
                 alt={movie.title}
               />
-              <ListItemText> {movie.title}</ListItemText>
+              {movie.title ? (
+                <ListItemText> {movie.title}</ListItemText>
+              ) : (
+                <ListItemText> {movie.original_name}</ListItemText>
+              )}
             </StyledLink>
           </ListItem>
         ))}

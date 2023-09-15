@@ -62,3 +62,22 @@ export const fetchMovieReviews = async movieId => {
 
   return await axios.request(options);
 };
+
+export const fetchMovieBySearch = async (query, page) => {
+  const options = {
+    method: 'GET',
+    url: `${BASE_URL}/search/movie`,
+    params: {
+      query: query,
+      include_adult: 'false',
+      language: 'en-US',
+      page: page,
+    },
+    headers: {
+      accept: 'application/json',
+      Authorization: API_KEY,
+    },
+  };
+
+  return await axios.request(options);
+};
