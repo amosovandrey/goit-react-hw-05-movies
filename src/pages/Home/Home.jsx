@@ -1,32 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { NavLink, useLocation } from 'react-router-dom';
 
-import {
-  fetchTrendingMovies,
-  IMAGE_BASE_URL,
-  IMAGE_SIZE,
-} from 'services/tmdbAPI';
-import {
-  List,
-  Wrapper,
-  ListItem,
-  ListItemText,
-  ListItemImage,
-  Title,
-} from './Home.styled';
+import { fetchTrendingMovies } from 'services/tmdbAPI';
 import { Loader } from 'components/Loader/Loader';
+import { Wrapper, Title } from './Home.styled';
 
-const StyledLink = styled(NavLink)`
-  color: var(--color-txt);
-  text-decoration: none;
-  &.active {
-    color: var(--color-accent);
-  }
-`;
+import MoviesList from 'components/MoviesList/MoviesList';
 
 const Home = () => {
-  const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -50,26 +30,10 @@ const Home = () => {
 
   return (
     <Wrapper>
+      <Title>Trending Today</Title>
       {isLoading && <Loader />}
       {error && <h2> Oops!.. Something goes wrong</h2>}
-      <Title>Trending Today</Title>
-      <List>
-        {movies.map(movie => (
-          <ListItem key={movie.id}>
-            <StyledLink to={`movie/${movie.id}`} state={{ from: location }}>
-              <ListItemImage
-                src={`${IMAGE_BASE_URL}${IMAGE_SIZE}${movie.poster_path}`}
-                alt={movie.title}
-              />
-              {movie.title ? (
-                <ListItemText> {movie.title}</ListItemText>
-              ) : (
-                <ListItemText> {movie.original_name}</ListItemText>
-              )}
-            </StyledLink>
-          </ListItem>
-        ))}
-      </List>
+      <MoviesList movies={movies} />
     </Wrapper>
   );
 };

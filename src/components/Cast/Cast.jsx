@@ -54,26 +54,23 @@ const Cast = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {error ? (
+      {error || actors.length === 0 ? (
         <h3>Looks like there's no info about the cast 🤷🏻‍♂️</h3>
       ) : (
         <CastWrapper>
           <CastList>
             {actors.slice(0, visibleActors).map(actor => (
               <CastListItem key={actor.id}>
-                {actor.profile_path ? (
-                  <CastListItemImage
-                    src={`${IMAGE_BASE_URL}${IMAGE_SIZE}${actor.profile_path}`}
-                    alt={`${actor.name}`}
-                    width="32"
-                  />
-                ) : (
-                  <CastListItemImage
-                    src={defaultCastPic}
-                    alt="cast"
-                    width="32"
-                  />
-                )}
+                <CastListItemImage
+                  src={
+                    actor.profile_path
+                      ? `${IMAGE_BASE_URL}${IMAGE_SIZE}${actor.profile_path}`
+                      : defaultCastPic
+                  }
+                  alt={`${actor.name}`}
+                  width="32"
+                />
+
                 <CastListItemText>
                   {actor.name}
                   {actor.character && (
