@@ -6,6 +6,7 @@ import {
 } from 'services/tmdbAPI';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+// import { toast } from 'react-toastify';
 
 import {
   List,
@@ -26,8 +27,8 @@ const StyledLink = styled(NavLink)`
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query');
-  const page = searchParams.get('page');
+  const query = searchParams.get('query') ?? '';
+  const page = searchParams.get('page') ?? 1;
   const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
@@ -50,15 +51,19 @@ const Movies = () => {
       });
   }, [page, query]);
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    setSearchParams({ query: form.elements.query.value });
+    form.reset();
+  };
+
   return (
     <div>
-      <input
-        type="text"
-        onChange={evt => setSearchParams({ query: evt.target.value })}
-      />
-      <button type="submit" onClick={() => setSearchParams()}>
-        search
-      </button>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="query" autoComplete="off" />
+        <button type="submit">search</button>
+      </form>
       <Wrapper>
         {isLoading && <Loader />}
         {error && <h2> Oops!.. Something goes wrong</h2>}
