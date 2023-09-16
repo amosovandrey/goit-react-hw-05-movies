@@ -22,7 +22,7 @@ export const PaginationContainer = styled.div`
 
   .pagination a {
     text-decoration: none;
-    padding: 4px;
+    padding: 4px 8px;
     border: 1px solid var(--color-bg);
     border-radius: 4px;
     color: var(--color-txt);

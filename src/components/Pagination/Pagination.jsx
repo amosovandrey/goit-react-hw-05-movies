@@ -8,7 +8,7 @@ const Pagination = ({ pageCount, onPageChange }) => {
         pageCount={pageCount}
         pageRangeDisplayed={2}
         marginPagesDisplayed={1}
-        previousLabel={'Previous'}
+        previousLabel={'Prev'}
         nextLabel={'Next'}
         breakLabel={'...'}
         breakClassName={'break-me'}
