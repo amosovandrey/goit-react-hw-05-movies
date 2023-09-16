@@ -5,6 +5,7 @@ import { Loader } from 'components/Loader/Loader';
 import { Wrapper, Title } from './Home.styled';
 
 import MoviesList from 'components/MoviesList/MoviesList';
+import ScrollToTop from 'components/Scroll/Scroll';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -34,6 +35,7 @@ const Home = () => {
       {isLoading && <Loader />}
       {error && <h2> Oops!.. Something goes wrong</h2>}
       <MoviesList movies={movies} />
+      <ScrollToTop />
     </Wrapper>
   );
 };

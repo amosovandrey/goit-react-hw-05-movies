@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Wrapper } from './MovieDetails.styled';
 
 import MoviesItem from 'components/MoviesItem/MoviesItem';
+import ScrollToTop from 'components/Scroll/Scroll';
 
 const StyledLink = styled(NavLink)`
   color: var(--color-txt);
@@ -30,6 +31,7 @@ const MovieDetails = () => {
       <StyledLink to={backLinkLocationRef.current}>Go Back</StyledLink>
 
       <MoviesItem />
+      <ScrollToTop />
     </Wrapper>
   );
 };
